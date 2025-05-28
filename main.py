@@ -53,7 +53,7 @@ def display_friends_details(target_user_id: int, target_user_name: str, requeste
             print(f"\nДруг: {friend_full_name} (ID: {friend_id}) - ДЕАКТИВИРОВАН ({deactivated_status}).")
             continue
 
-        print(f"\n👤 Друг: {friend_full_name} (ID: {friend_id})")
+        print(f"\nДруг: {friend_full_name} (ID: {friend_id})")
 
         try:
             time.sleep(0.35)
@@ -98,7 +98,7 @@ def display_albums_details(user_id: int, user_display_name: str):
 
 def run_app():
     print("========================================")
-    print(" VK API Data Retriever by Gemini & User ")
+    print(" VK API Data ")
     print("========================================")
 
     user_id_or_name_input = input("Введите ID или короткое имя пользователя (например, '1' или 'durov'): ").strip()
@@ -122,7 +122,7 @@ def run_app():
             print("Не удалось получить ID пользователя.")
             return
 
-        print(f"\n👤 Информация для пользователя: {current_user_name} (ID: {current_user_id})")
+        print(f"\nИнформация для пользователя: {current_user_name} (ID: {current_user_id})")
 
         deactivated_status = is_user_deactivated_status(target_user_main_data)
         if deactivated_status:
@@ -130,13 +130,13 @@ def run_app():
 
         while True:
             print("\nДоступные действия:")
-            print("1. 🧑‍🤝‍🧑 Друзья (вывести список друзей пользователя и их кол-во друзей)")
-            print("2. 🏞️ Альбомы (вывести список фотоальбомов пользователя)")
-            req = input("⌨️ Введите номер опции (1 или 2) или 'выход' для завершения: ").strip().lower()
+            print("1. Друзья (вывести список друзей пользователя и их кол-во друзей)")
+            print("2. Альбомы (вывести список фотоальбомов пользователя)")
+            req = input("⌨Введите номер опции (1 или 2) или 'выход' для завершения: ").strip().lower()
 
             if req == '1' or req == 'друзья':
                 friends_count_input_str = input(
-                    "❔ Скольких друзей отобразить информацию? (Enter - по умолчанию API, обычно до 5000): ").strip()
+                    " Скольких друзей отобразить информацию? (Enter - по умолчанию API, обычно до 5000): ").strip()
                 requested_display_count = None
                 if friends_count_input_str.isdigit():
                     requested_display_count = int(friends_count_input_str)
@@ -147,7 +147,7 @@ def run_app():
                 display_albums_details(current_user_id, current_user_name)
                 break
             elif req == 'выход' or req == 'exit':
-                print("👋 Завершение работы.")
+                print("Завершение работы.")
                 break
             else:
                 print("Некорректный ввод. Пожалуйста, выберите '1', '2', или 'выход'.")
@@ -159,7 +159,7 @@ def run_app():
     except ConnectionError as e:
         print(f"Ошибка сети: {e}")
     except ValueError as e:
-        print(f"🛠Ошибка обработки данных: {e}")
+        print(f"Ошибка обработки данных: {e}")
     except Exception as e:
         print(f"Произошла непредвиденная ошибка: {e}")
         import traceback
